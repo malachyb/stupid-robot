@@ -9,6 +9,8 @@ client = discord.Client()
 
 def fortune():
     ret_str = Popen(["fortune"], stdout=PIPE).communicate()[0]
+    while "Q:" in str(ret_str, "utf-8") or "--" in str(ret_str, "utf-8"):
+        ret_str = Popen(["fortune"], stdout=PIPE).communicate()[0]
     return "```" + str(Popen(["cowsay", ret_str], stdout=PIPE).communicate()[0], "utf-8") + "```"
 
 
