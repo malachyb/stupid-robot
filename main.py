@@ -15,7 +15,8 @@ def fortune():
 
 
 def lenny():
-    req = requests.get("https://api.lenny.today/v1/random").json()[0]
+    req = requests.get("https://api.lenny.today/v1/random")
+    req = req.json()[0]
     return req["face"]
 
 
