@@ -10,3 +10,6 @@ Gives a random Lenny face
 
 ## Hello
 Greets the user who gave the command
+
+## Crab
+Does an ASCII crab rave
