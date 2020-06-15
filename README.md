@@ -21,7 +21,7 @@ Does an ASCII crab rave
 Makes a cow say the rest of your message
 
 ## Roll
-Rolls a die with the number of sides chosen by the user. Used by typing &roll n
+Rolls a die with the number of sides chosen by the user. Used by typing &roll n. Defaults to 6.
 
 ## Flip
 Flips a coin and gives you either heads or tails

@@ -99,7 +99,7 @@ async def on_message(message: discord.Message):
                 await channel.send(help(command[1] if len(command) > 1 else "default"))
                 return
             elif command[0] == "roll":
-                await channel.send(roll(int(command[1])))
+                await channel.send(roll(int(command[1]) if len(command) > 1 else 6))
                 return
             elif command[0] == "flip":
                 await channel.send(flip())
