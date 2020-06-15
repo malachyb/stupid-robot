@@ -43,12 +43,16 @@ def help(command):
     lenny:   sends a random lenny face
     cow:     sends a cow saying whatever message you follow the command with
     fortune: sends a cow giving you a fortune
-    crab:    sends a message with a crab doing a dance```""",
-                "hello":   "hello: greets the user who called it",
-                "lenny":   "lenny: sends a random lenny face",
-                "cow":     "cow: sends a cow saying whatever message you follow the command with",
-                "fortune": "fortune: sends a cow giving you a fortune",
-                "crab":    "crab: sends a message with a crab doing a dance"}[command]
+    crab:    sends a message with a crab doing a dance
+    roll:    rolls a number of dice with any number of sides
+    flip:    flips a coin```""",
+                "hello":   "hello: greets the user who called it. &hello",
+                "lenny":   "lenny: sends a random lenny face. &lenny",
+                "cow":     "cow: sends a cow saying whatever message you follow the command with &cow [message]",
+                "fortune": "fortune: sends a cow giving you a fortune. &fortune",
+                "crab":    "crab: sends a message with a crab doing a dance. &crab",
+                "roll":    "rolls a number of dice with any number of sides. &roll [optional(sides)] [optional(count)]",
+                "flip":    "flips a coin. &flip"}[command]
     except KeyError:
         return "Error: Command not found"
 
