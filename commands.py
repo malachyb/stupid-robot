@@ -53,8 +53,8 @@ def help(command):
         return "Error: Command not found"
 
 
-def roll(size):
-    return random.randint(1, size)
+def roll(size=6, count=1):
+    return sum((random.randint(1, size) for i in range(count)))
 
 
 def flip():
