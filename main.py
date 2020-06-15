@@ -34,7 +34,11 @@ async def crab(channel: discord.TextChannel):
             break
     for i in crabs:
         await message.edit(content=i)
-        await asyncio.sleep(0.25)
+        await asyncio.sleep(0.1)
+
+
+def cow(phrase):
+    return "```" + str(Popen(["cowsay", phrase], stdout=PIPE).communicate()[0], "utf-8") + "```"
 
 
 
@@ -51,15 +55,17 @@ async def on_message(message: discord.Message):
     command = message.content
     if command[0] == '&':
         async with channel.typing():
-            command = command[1:]
-            if command == "fortune":
+            command = command[1:].split()
+            if command[0] == "fortune":
                 await channel.send(fortune())
-            elif command == "lenny":
+            elif command[0] == "lenny":
                 await channel.send(lenny())
-            elif command == "hello":
+            elif command[0] == "hello":
                 await channel.send(hello(str(message.author).split('#')[0].capitalize()))
-            elif command == "crab":
+            elif command[0] == "crab":
                 await crab(channel)
+            elif command[0] == "cow":
+                await channel.send(cow(' '.join(command[1:])))
 
 
 client.run(TOKEN)

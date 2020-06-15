@@ -13,3 +13,6 @@ Greets the user who gave the command
 
 ## Crab
 Does an ASCII crab rave
+
+## Cow
+Makes a cow say the rest of your message
