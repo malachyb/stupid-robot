@@ -1,4 +1,4 @@
-import os, discord, requests, asyncio
+import os, discord, requests, asyncio, random
 from dotenv import load_dotenv
 from subprocess import Popen, PIPE
 
@@ -58,6 +58,10 @@ def help(command):
         return "Error: Command not found"
 
 
+def roll(size):
+    return random.randint(1, size)
+
+
 @client.event
 async def on_ready():
     print("Ya boi is here")
@@ -89,6 +93,10 @@ async def on_message(message: discord.Message):
                 return
             elif command[0] == "help":
                 await channel.send(help(command[1] if len(command) > 1 else "default"))
+                return
+            elif command[0] == "roll":
+                await channel.send(roll(int(command[1])))
+                print(command)
                 return
             await channel.send("Command not found, try &help for a list of available commands")
 

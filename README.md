@@ -2,6 +2,9 @@
 Stupidest discord bot ever made. Commands are called by sending a message &\[command], where command is the name of the command needed.  
 The commands currently implemented are:
 
+## Help
+Gives a list of commands, use &help \[command] to get a description of a specific command
+
 ## Fortune
 Gives you a fortune as spoken by a cow
 
@@ -17,5 +20,5 @@ Does an ASCII crab rave
 ## Cow
 Makes a cow say the rest of your message
 
-## Help
-Gives a list of commands, use &help \[command] to get a description of a specific command
+## Roll
+Rolls a die with the number of sides chosen by the user. Used by typing &roll n
