@@ -90,6 +90,7 @@ async def on_message(message: discord.Message):
             elif command[0] == "help":
                 await channel.send(help(command[1] if len(command) > 1 else "default"))
                 return
+            await channel.send("Command not found, try &help for a list of available commands")
 
 
 client.run(TOKEN)
