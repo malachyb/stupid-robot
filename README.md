@@ -7,3 +7,6 @@ Gives you a fortune as spoken by a cow
 
 ## Lenny
 Gives a random Lenny face
+
+## Hello
+Greets the user who gave the command
