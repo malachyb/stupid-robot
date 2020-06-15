@@ -62,6 +62,10 @@ def roll(size):
     return random.randint(1, size)
 
 
+def flip():
+    return random.choice(["heads", "tails"])
+
+
 @client.event
 async def on_ready():
     print("Ya boi is here")
@@ -96,7 +100,9 @@ async def on_message(message: discord.Message):
                 return
             elif command[0] == "roll":
                 await channel.send(roll(int(command[1])))
-                print(command)
+                return
+            elif command[0] == "flip":
+                await channel.send(flip())
                 return
             await channel.send("Command not found, try &help for a list of available commands")
 
