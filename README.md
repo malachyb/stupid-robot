@@ -16,3 +16,6 @@ Does an ASCII crab rave
 
 ## Cow
 Makes a cow say the rest of your message
+
+## Help
+Gives a list of commands, use &help \[command] to get a description of a specific command

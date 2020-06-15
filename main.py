@@ -41,6 +41,22 @@ def cow(phrase):
     return "```" + str(Popen(["cowsay", phrase], stdout=PIPE).communicate()[0], "utf-8") + "```"
 
 
+def help(command):
+    try:
+        return {"default": """```Commands list:
+    hello:   greets the user who called it
+    lenny:   sends a random lenny face
+    cow:     sends a cow saying whatever message you follow the command with
+    fortune: sends a cow giving you a fortune
+    crab:    sends a message with a crab doing a dance```""",
+                "hello":   "hello: greets the user who called it",
+                "lenny":   "lenny: sends a random lenny face",
+                "cow":     "cow: sends a cow saying whatever message you follow the command with",
+                "fortune": "fortune: sends a cow giving you a fortune",
+                "crab":    "crab: sends a message with a crab doing a dance"}[command]
+    except KeyError:
+        return "Error: Command not found"
+
 
 @client.event
 async def on_ready():
@@ -58,14 +74,22 @@ async def on_message(message: discord.Message):
             command = command[1:].split()
             if command[0] == "fortune":
                 await channel.send(fortune())
+                return
             elif command[0] == "lenny":
                 await channel.send(lenny())
+                return
             elif command[0] == "hello":
                 await channel.send(hello(str(message.author).split('#')[0].capitalize()))
+                return
             elif command[0] == "crab":
                 await crab(channel)
+                return
             elif command[0] == "cow":
                 await channel.send(cow(' '.join(command[1:])))
+                return
+            elif command[0] == "help":
+                await channel.send(help(command[1] if len(command) > 1 else "default"))
+                return
 
 
 client.run(TOKEN)
