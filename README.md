@@ -25,3 +25,6 @@ Rolls a number of dice with the number of sides chosen by the user. Used by typi
 
 ## Flip
 Flips a coin and gives you either heads or tails
+
+## Emoji
+Gives a random emoji from the server

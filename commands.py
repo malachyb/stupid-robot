@@ -19,7 +19,7 @@ def hello(name):
     return f"Hello {name}"
 
 
-async def crab(channel: discord.TextChannel):
+async def crab(channel: discord.TextChannel, client):
     crabs = ["(/)(;,,;)(/)", "(\\\\)(;,,;)(\\\\)"] * 10
     await channel.send("crab")
     message = 0
@@ -45,14 +45,16 @@ def help(command):
     fortune: sends a cow giving you a fortune
     crab:    sends a message with a crab doing a dance
     roll:    rolls a number of dice with any number of sides
-    flip:    flips a coin```""",
-                "hello":   "hello: greets the user who called it. &hello",
-                "lenny":   "lenny: sends a random lenny face. &lenny",
-                "cow":     "cow: sends a cow saying whatever message you follow the command with &cow [message]",
-                "fortune": "fortune: sends a cow giving you a fortune. &fortune",
-                "crab":    "crab: sends a message with a crab doing a dance. &crab",
-                "roll":    "rolls a number of dice with any number of sides. &roll [optional(sides)] [optional(count)]",
-                "flip":    "flips a coin. &flip"}[command]
+    flip:    flips a coin
+    emoji:   gives a random emoji```""",
+                "hello":   "hello: greets the user who called it. \n&hello",
+                "lenny":   "lenny: sends a random lenny face. \n&lenny",
+                "cow":     "cow: sends a cow saying whatever message you follow the command with. \n&cow [message]",
+                "fortune": "fortune: sends a cow giving you a fortune. \n&fortune",
+                "crab":    "crab: sends a message with a crab doing a dance. \n&crab",
+                "roll":    "rolls a number of dice with any number of sides. \n&roll [optional(sides)] [optional(count)]",
+                "flip":    "flips a coin. \n&flip",
+                "emoji":   "gives a random emoji. \n&emoji"}[command]
     except KeyError:
         return "Error: Command not found"
 
@@ -63,3 +65,7 @@ def roll(size=6, count=1):
 
 def flip():
     return random.choice(["heads", "tails"])
+
+
+def emoji(server):
+    return random.choice(server.emojis)

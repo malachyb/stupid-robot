@@ -31,7 +31,7 @@ async def on_message(message: discord.Message):
                 await channel.send(hello(str(message.author).split('#')[0].capitalize()))
                 return
             elif command[0] == "crab":
-                await crab(channel)
+                await crab(channel, client)
                 return
             elif command[0] == "cow":
                 await channel.send(cow(' '.join(command[1:])))
@@ -44,6 +44,9 @@ async def on_message(message: discord.Message):
                 return
             elif command[0] == "flip":
                 await channel.send(flip())
+                return
+            elif command[0] == "emoji":
+                await channel.send(emoji(channel.guild))
                 return
             await channel.send("Command not found, try &help for a list of available commands")
 
