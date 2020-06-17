@@ -1,5 +1,6 @@
 import discord, requests, asyncio, random
 from subprocess import Popen, PIPE
+from zalgo_text import zalgo
 
 
 def fortune():
@@ -46,7 +47,8 @@ def help(command):
     crab:    sends a message with a crab doing a dance
     roll:    rolls a number of dice with any number of sides
     flip:    flips a coin
-    emoji:   gives a random emoji```""",
+    emoji:   gives a random emoji
+    zalgofy: converts your message to zalgo text```""",
                 "hello":   "hello: greets the user who called it. \n&hello",
                 "lenny":   "lenny: sends a random lenny face. \n&lenny",
                 "cow":     "cow: sends a cow saying whatever message you follow the command with. \n&cow [message]",
@@ -54,7 +56,8 @@ def help(command):
                 "crab":    "crab: sends a message with a crab doing a dance. \n&crab",
                 "roll":    "rolls a number of dice with any number of sides. \n&roll [optional(sides)] [optional(count)]",
                 "flip":    "flips a coin. \n&flip",
-                "emoji":   "gives a random emoji. \n&emoji"}[command]
+                "emoji":   "gives a random emoji. \n&emoji",
+                "zalgofy": "converts your message to zalgo text. \n&zalgofy [text]"}[command]
     except KeyError:
         return "Error: Command not found"
 
@@ -69,3 +72,7 @@ def flip():
 
 def emoji(server):
     return random.choice(server.emojis)
+
+
+def zalgofy(text):
+    return zalgo.zalgo().zalgofy(text)

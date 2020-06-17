@@ -48,6 +48,12 @@ async def on_message(message: discord.Message):
             elif command[0] == "emoji":
                 await channel.send(emoji(channel.guild))
                 return
+            elif command[0] == "zalgofy":
+                try:
+                    await channel.send(zalgofy(' '.join(command[1:])))
+                except IndexError:
+                    await channel.send("Need a message to zalgofy")
+                return
             await channel.send("Command not found, try &help for a list of available commands")
 
 

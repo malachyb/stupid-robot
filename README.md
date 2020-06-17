@@ -28,3 +28,6 @@ Flips a coin and gives you either heads or tails
 
 ## Emoji
 Gives a random emoji from the server
+
+## Zalgofy
+Converts your message to zalgo text
