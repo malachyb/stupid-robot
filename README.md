@@ -37,3 +37,6 @@ Converts your message to ASCII art
 
 ## Animate
 Animates your message
+
+## Yoda
+Translates your message to Yoda

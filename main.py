@@ -66,6 +66,12 @@ async def on_message(message: discord.Message):
                 except IndexError:
                     await channel.send("Need a message to turn into ASCII")
                 return
+            elif command[0] == "yoda":
+                try:
+                    await channel.send(yoda('%20'.join(command[1:])))
+                except IndexError:
+                    await channel.send("Need a message to translate")
+                return
             await channel.send("Command not found, try &help for a list of available commands")
 
 

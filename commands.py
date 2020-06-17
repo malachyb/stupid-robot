@@ -50,7 +50,8 @@ def help(command):
     emoji:   gives a random emoji
     zalgofy: converts your message to zalgo text
     ascii:   converts your message to ASCII art
-    animate: creates an animation cycling through the characters of your message```""",
+    animate: creates an animation cycling through the characters of your message
+    yoda:    translates your message into Yoda```""",
                 "hello":   "hello: greets the user who called it. \n&hello",
                 "lenny":   "lenny: sends a random lenny face. \n&lenny",
                 "cow":     "cow: sends a cow saying whatever message you follow the command with. \n&cow [message]",
@@ -61,7 +62,8 @@ def help(command):
                 "emoji":   "gives a random emoji. \n&emoji",
                 "zalgofy": "converts your message to zalgo text. \n&zalgofy [text]",
                 "ascii":   "converts your message to ASCII art. \n&ascii [text]",
-                "animate": "creates an animation cycling through the characters of your message. \n&animate [message]"}[command]
+                "animate": "creates an animation cycling through the characters of your message. \n&animate [message]",
+                "yoda":    "translates your message into Yoda. \n &yoda [message]"}[command]
     except KeyError:
         return "Error: Command not found"
 
@@ -96,3 +98,8 @@ async def animate(text, channel, client):
     for char in text:
         await message.edit( content="```" +requests.get(f"http://artii.herokuapp.com/make?text={char}").text + "```")
         await asyncio.sleep(0.1)
+
+
+def yoda(message):
+    req = requests.get(f"https://api.funtranslations.com/translate/yoda.json?text={message}").json()
+    return req["contents"]["translated"]
