@@ -48,7 +48,8 @@ def help(command):
     roll:    rolls a number of dice with any number of sides
     flip:    flips a coin
     emoji:   gives a random emoji
-    zalgofy: converts your message to zalgo text```""",
+    zalgofy: converts your message to zalgo text
+    ascii:   converts your message to ASCII art```""",
                 "hello":   "hello: greets the user who called it. \n&hello",
                 "lenny":   "lenny: sends a random lenny face. \n&lenny",
                 "cow":     "cow: sends a cow saying whatever message you follow the command with. \n&cow [message]",
@@ -57,7 +58,8 @@ def help(command):
                 "roll":    "rolls a number of dice with any number of sides. \n&roll [optional(sides)] [optional(count)]",
                 "flip":    "flips a coin. \n&flip",
                 "emoji":   "gives a random emoji. \n&emoji",
-                "zalgofy": "converts your message to zalgo text. \n&zalgofy [text]"}[command]
+                "zalgofy": "converts your message to zalgo text. \n&zalgofy [text]",
+                "ascii":   "converts your message to ASCII art. \n&ascii [text]"}[command]
     except KeyError:
         return "Error: Command not found"
 
@@ -76,3 +78,9 @@ def emoji(server):
 
 def zalgofy(text):
     return zalgo.zalgo().zalgofy(text)
+
+
+def ascii(text):
+    req = requests.get(f"http://artii.herokuapp.com/make?text={text}")
+    return "```" + req.text + "```"
+

@@ -31,3 +31,6 @@ Gives a random emoji from the server
 
 ## Zalgofy
 Converts your message to zalgo text
+
+## ASCII
+Converts your message to ASCII art

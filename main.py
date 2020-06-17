@@ -54,6 +54,12 @@ async def on_message(message: discord.Message):
                 except IndexError:
                     await channel.send("Need a message to zalgofy")
                 return
+            elif command[0] == "ascii":
+                try:
+                    await channel.send(ascii('+++'.join(command[1:])))
+                except IndexError:
+                    await channel.send("Need a message to turn into ASCII")
+                return
             await channel.send("Command not found, try &help for a list of available commands")
 
 
