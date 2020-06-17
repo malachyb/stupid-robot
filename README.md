@@ -34,3 +34,6 @@ Converts your message to zalgo text
 
 ## ASCII
 Converts your message to ASCII art
+
+## Animate
+Animates your message

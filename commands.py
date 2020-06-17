@@ -49,7 +49,8 @@ def help(command):
     flip:    flips a coin
     emoji:   gives a random emoji
     zalgofy: converts your message to zalgo text
-    ascii:   converts your message to ASCII art```""",
+    ascii:   converts your message to ASCII art
+    animate: creates an animation cycling through the characters of your message```""",
                 "hello":   "hello: greets the user who called it. \n&hello",
                 "lenny":   "lenny: sends a random lenny face. \n&lenny",
                 "cow":     "cow: sends a cow saying whatever message you follow the command with. \n&cow [message]",
@@ -59,7 +60,8 @@ def help(command):
                 "flip":    "flips a coin. \n&flip",
                 "emoji":   "gives a random emoji. \n&emoji",
                 "zalgofy": "converts your message to zalgo text. \n&zalgofy [text]",
-                "ascii":   "converts your message to ASCII art. \n&ascii [text]"}[command]
+                "ascii":   "converts your message to ASCII art. \n&ascii [text]",
+                "animate": "creates an animation cycling through the characters of your message. \n&animate [message]"}[command]
     except KeyError:
         return "Error: Command not found"
 
@@ -84,3 +86,13 @@ def ascii(text):
     req = requests.get(f"http://artii.herokuapp.com/make?text={text}")
     return "```" + req.text + "```"
 
+
+async def animate(text, channel, client):
+    await channel.send(text)
+    async for tmp in channel.history(limit=10):
+        if tmp.author == client.user:
+            message = tmp
+            break
+    for char in text:
+        await message.edit( content="```" +requests.get(f"http://artii.herokuapp.com/make?text={char}").text + "```")
+        await asyncio.sleep(0.1)
