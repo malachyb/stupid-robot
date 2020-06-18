@@ -1,4 +1,4 @@
-import discord, requests, asyncio, random
+import discord, requests, asyncio, random, re
 from subprocess import Popen, PIPE
 from zalgo_text import zalgo
 
@@ -52,7 +52,11 @@ def help(command):
     ascii:   converts your message to ASCII art
     animate: creates an animation cycling through the characters of your message
     yoda:    translates your message into Yoda
-    roast:   insults tagged user```""",
+    roast:   insults tagged user
+    dog:     sends a picture of a dog
+    cat:     sends a picture of a cat
+    monkey:  sends a picture of a monkey
+    giraffe: sends a picture of a giraffe```""",
                 "hello":   "hello: greets the user who called it. \n&hello",
                 "lenny":   "lenny: sends a random lenny face. \n&lenny",
                 "cow":     "cow: sends a cow saying whatever message you follow the command with. \n&cow [message]",
@@ -65,7 +69,11 @@ def help(command):
                 "ascii":   "converts your message to ASCII art. \n&ascii [text]",
                 "animate": "creates an animation cycling through the characters of your message. \n&animate [message]",
                 "yoda":    "translates your message into Yoda. \n &yoda [message]",
-                "roast":   "insults tagged user. \n&roast @[username]"}[command]
+                "roast":   "insults tagged user. \n&roast @[username]",
+                "dog":     "sends a picture of a dog. \n&dog",
+                "cat":     "sends a picture of a cat. \n&cat",
+                "monkey":  "sends a picture of a monkey. \n&monkey",
+                "giraffe": "sends a picture of a giraffe"}[command]
     except KeyError:
         return "Error: Command not found"
 
@@ -111,3 +119,11 @@ def roast(user: discord.User):
     req = requests.get("https://evilinsult.com/generate_insult.php?lang=en")
     insult = req.text
     return user.mention + " " + insult
+
+
+def image(tag):
+    req = requests.get(f"https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags={tag}")
+    req = eval(req.text.replace("jsonFlickrFeed(", "")[:-1])
+    req = random.choice(req["items"])["description"]
+    req = re.findall('src=\".*\"', req)[0].split('"')[1].replace("\\/", '/')
+    return req

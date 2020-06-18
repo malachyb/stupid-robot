@@ -43,3 +43,15 @@ Translates your message to Yoda
 
 ## Roast
 Roasts the tagged user
+
+## Dog
+Sends a picture of a dog
+
+## Cat
+Sends a picture of a cat
+
+## Monkey
+Sends a picture of a monkey
+
+## Giraffe
+Sends a picture of a giraffe

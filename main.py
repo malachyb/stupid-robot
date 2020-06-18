@@ -78,6 +78,18 @@ async def on_message(message: discord.Message):
                 except IndexError:
                     await channel.send("need a user to roast")
                 return
+            elif command[0] == "dog":
+                await channel.send(image("dog"))
+                return
+            elif command[0] == "cat":
+                await channel.send(image("cat"))
+                return
+            elif command[0] == "monkey":
+                await channel.send(image("monkey"))
+                return
+            elif command[0] == "giraffe":
+                await channel.send(image("giraffe"))
+                return
             await channel.send("Command not found, try &help for a list of available commands")
 
 
