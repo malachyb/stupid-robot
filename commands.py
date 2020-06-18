@@ -51,7 +51,8 @@ def help(command):
     zalgofy: converts your message to zalgo text
     ascii:   converts your message to ASCII art
     animate: creates an animation cycling through the characters of your message
-    yoda:    translates your message into Yoda```""",
+    yoda:    translates your message into Yoda
+    roast:   insults tagged user```""",
                 "hello":   "hello: greets the user who called it. \n&hello",
                 "lenny":   "lenny: sends a random lenny face. \n&lenny",
                 "cow":     "cow: sends a cow saying whatever message you follow the command with. \n&cow [message]",
@@ -63,7 +64,8 @@ def help(command):
                 "zalgofy": "converts your message to zalgo text. \n&zalgofy [text]",
                 "ascii":   "converts your message to ASCII art. \n&ascii [text]",
                 "animate": "creates an animation cycling through the characters of your message. \n&animate [message]",
-                "yoda":    "translates your message into Yoda. \n &yoda [message]"}[command]
+                "yoda":    "translates your message into Yoda. \n &yoda [message]",
+                "roast":   "insults tagged user. \n&roast @[username]"}[command]
     except KeyError:
         return "Error: Command not found"
 
@@ -103,3 +105,9 @@ async def animate(text, channel, client):
 def yoda(message):
     req = requests.get(f"https://api.funtranslations.com/translate/yoda.json?text={message}").json()
     return req["contents"]["translated"]
+
+
+def roast(user: discord.User):
+    req = requests.get("https://evilinsult.com/generate_insult.php?lang=en")
+    insult = req.text
+    return user.mention + " " + insult

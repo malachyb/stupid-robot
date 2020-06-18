@@ -40,3 +40,6 @@ Animates your message
 
 ## Yoda
 Translates your message to Yoda
+
+## Roast
+Roasts the tagged user

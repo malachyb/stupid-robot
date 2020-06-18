@@ -72,6 +72,12 @@ async def on_message(message: discord.Message):
                 except IndexError:
                     await channel.send("Need a message to translate")
                 return
+            elif command[0] == "roast":
+                try:
+                    await channel.send(roast(message.mentions[0]))
+                except IndexError:
+                    await channel.send("need a user to roast")
+                return
             await channel.send("Command not found, try &help for a list of available commands")
 
 
