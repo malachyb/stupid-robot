@@ -1,19 +1,4 @@
-import discord, requests, asyncio, random, re
-from subprocess import Popen, PIPE
-from zalgo_text import zalgo
-
-
-def fortune():
-    ret_str = Popen(["fortune"], stdout=PIPE).communicate()[0]
-    while "Q:" in str(ret_str, "utf-8") or "--" in str(ret_str, "utf-8"):
-        ret_str = Popen(["fortune"], stdout=PIPE).communicate()[0]
-    return "```" + str(Popen(["cowsay", ret_str], stdout=PIPE).communicate()[0], "utf-8") + "```"
-
-
-def lenny():
-    req = requests.get("https://api.lenny.today/v1/random")
-    req = req.json()[0]
-    return req["face"]
+import discord, asyncio
 
 
 def hello(name):
@@ -31,10 +16,6 @@ async def crab(channel: discord.TextChannel, client):
     for i in crabs:
         await message.edit(content=i)
         await asyncio.sleep(0.1)
-
-
-def cow(phrase):
-    return "```" + str(Popen(["cowsay", phrase], stdout=PIPE).communicate()[0], "utf-8") + "```"
 
 
 def help(command):
@@ -76,54 +57,3 @@ def help(command):
                 "giraffe": "sends a picture of a giraffe"}[command]
     except KeyError:
         return "Error: Command not found"
-
-
-def roll(size=6, count=1):
-    return sum((random.randint(1, size) for i in range(count)))
-
-
-def flip():
-    return random.choice(["heads", "tails"])
-
-
-def emoji(server):
-    return random.choice(server.emojis)
-
-
-def zalgofy(text):
-    return zalgo.zalgo().zalgofy(text)
-
-
-def ascii(text):
-    req = requests.get(f"http://artii.herokuapp.com/make?text={text}")
-    return "```" + req.text + "```"
-
-
-async def animate(text, channel, client):
-    await channel.send(text)
-    async for tmp in channel.history(limit=10):
-        if tmp.author == client.user:
-            message = tmp
-            break
-    for char in text:
-        await message.edit( content="```" +requests.get(f"http://artii.herokuapp.com/make?text={char}").text + "```")
-        await asyncio.sleep(0.1)
-
-
-def yoda(message):
-    req = requests.get(f"https://api.funtranslations.com/translate/yoda.json?text={message}").json()
-    return req["contents"]["translated"]
-
-
-def roast(user: discord.User):
-    req = requests.get("https://evilinsult.com/generate_insult.php?lang=en")
-    insult = req.text
-    return user.mention + " " + insult
-
-
-def image(tag):
-    req = requests.get(f"https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags={tag}")
-    req = eval(req.text.replace("jsonFlickrFeed(", "")[:-1])
-    req = random.choice(req["items"])["description"]
-    req = re.findall('src=\".*\"', req)[0].split('"')[1].replace("\\/", '/')
-    return req

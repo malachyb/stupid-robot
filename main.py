@@ -1,6 +1,8 @@
 import os
 from dotenv import load_dotenv
-from commands import *
+from misc import *
+from randoms import *
+from responses import *
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -18,6 +20,8 @@ async def on_message(message: discord.Message):
         return
     channel = message.channel
     command = message.content
+    if not command:
+        return
     if command[0] == '&':
         async with channel.typing():
             command = command[1:].split()
