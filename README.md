@@ -55,3 +55,6 @@ Sends a picture of a monkey
 
 ## Giraffe
 Sends a picture of a giraffe
+
+## Compatibility
+Gives the compatibility of you and another user

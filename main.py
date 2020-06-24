@@ -94,6 +94,12 @@ async def on_message(message: discord.Message):
             elif command[0] == "giraffe":
                 await channel.send(image("giraffe"))
                 return
+            elif command[0] == "compatibility":
+                try:
+                    await channel.send(compatibility(message.author, message.mentions[0]))
+                except IndexError:
+                    await channel.send("needs a user to calculate compatibility")
+                return
             await channel.send("Command not found, try &help for a list of available commands")
 
 

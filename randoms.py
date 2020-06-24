@@ -39,3 +39,8 @@ def image(tag):
     req = random.choice(req["items"])["description"]
     req = re.findall('src=\".*\"', req)[0].split('"')[1].replace("\\/", '/')
     return req
+
+
+def compatibility(user1: discord.User, user2: discord.User):
+    random.seed(hash(user1.name + user2.name))
+    return f"{user1.mention} compatibility with {user2.mention} is {random.randint(0, 100)}%"
