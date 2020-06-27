@@ -1,5 +1,8 @@
 # Stupid Robot
 Stupidest discord bot ever made. Commands are called by sending a message &\[command], where command is the name of the command needed.  
+External modules required for this bot are:  
+`discord, zalgo-text, faker`
+
 The commands currently implemented are:
 
 ## Help
@@ -58,3 +61,9 @@ Sends a picture of a giraffe
 
 ## Compatibility
 Gives the compatibility of you and another user
+
+## Cool
+Gives you a coolness percentage
+
+## Space
+Gives a random NASA picture of the day

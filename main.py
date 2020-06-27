@@ -100,6 +100,12 @@ async def on_message(message: discord.Message):
                 except IndexError:
                     await channel.send("needs a user to calculate compatibility")
                 return
+            elif command[0] == "cool":
+                await channel.send(cool(message.author if not message.mentions else message.mentions[0]))
+                return
+            elif command[0] == "space":
+                await channel.send(space())
+                return
             await channel.send("Command not found, try &help for a list of available commands")
 
 
