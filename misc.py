@@ -40,7 +40,8 @@ def help(command):
     giraffe:       sends a picture of a giraffe
     compatibility: says how compatible you are with another user
     cool:          says how cool you are
-    space:         gives a random NASA picture of the day```""",
+    space:         gives a random NASA picture of the day
+    kanye:         sends a random quote from Kanye```""",
                 "hello": "hello: greets the user who called it. \n&hello",
                 "lenny": "lenny: sends a random lenny face. \n&lenny",
                 "cow": "cow: sends a cow saying whatever message you follow the command with. \n&cow [message]",
@@ -60,6 +61,7 @@ def help(command):
                 "giraffe": "sends a picture of a giraffe",
                 "compatibility": "Says how compatible you are with another user. \n&compatibility @[user]",
                 "cool": "says how cool you are. \n&cool",
-                "space": "gives you a random NASA picture of the day. \n&space"}[command]
+                "space": "gives you a random NASA picture of the day. \n&space",
+                "kanye": "sends a random kanye quote. \n&kanye"}[command]
     except KeyError:
         return "Error: Command not found"

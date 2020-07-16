@@ -106,6 +106,9 @@ async def on_message(message: discord.Message):
             elif command[0] == "space":
                 await channel.send(space())
                 return
+            elif command[0] == "kanye":
+                await channel.send(kanye())
+                return
             await channel.send("Command not found, try &help for a list of available commands")
 
 

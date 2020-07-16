@@ -59,3 +59,7 @@ def space():
     early_date = datetime.date(year=2000, month=1, day=1)
     date = faker.Faker().date_between(start_date=early_date, end_date="now")
     return requests.get(f"https://api.nasa.gov/planetary/apod?api_key=6F14k5aw1jvo6DaWr2xTFec57S6oYSgL3gvEv3Qa&hd=true&date={date}").json()["hdurl"]
+
+
+def kanye():
+    return requests.get("https://api.kanye.rest").json()["quote"]
