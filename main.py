@@ -40,6 +40,9 @@ async def on_message(message: discord.Message):
             elif command[0] == "cow":
                 await channel.send(cow(' '.join(command[1:])))
                 return
+            elif command[0] == "gnu":
+                await channel.send(gnu(' '.join(command[1:])))
+                return
             elif command[0] == "help":
                 await channel.send(help(command[1] if len(command) > 1 else "default"))
                 return

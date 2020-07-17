@@ -24,7 +24,8 @@ def help(command):
     hello:         greets the user who called it
     lenny:         sends a random lenny face
     cow:           sends a cow saying whatever message you follow the command with
-    fortune:       sends a cow giving you a fortune
+    gnu:           sends a gnu saying whatever message you follow the command with
+    fortune:       sends a gnu giving you a fortune
     crab:          sends a message with a crab doing a dance
     roll:          rolls a number of dice with any number of sides
     flip:          flips a coin
@@ -45,6 +46,7 @@ def help(command):
                 "hello": "hello: greets the user who called it. \n&hello",
                 "lenny": "lenny: sends a random lenny face. \n&lenny",
                 "cow": "cow: sends a cow saying whatever message you follow the command with. \n&cow [message]",
+                "gnu": "sends a gnu saying whatever message you follow the command with. \n&gnu",
                 "fortune": "fortune: sends a cow giving you a fortune. \n&fortune",
                 "crab": "crab: sends a message with a crab doing a dance. \n&crab",
                 "roll": "rolls a number of dice with any number of sides. \n&roll [optional(sides)] [optional(count)]",

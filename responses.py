@@ -7,6 +7,10 @@ def cow(phrase):
     return "```" + str(Popen(["cowsay", phrase], stdout=PIPE).communicate()[0], "utf-8") + "```"
 
 
+def gnu(phrase):
+    return "```" + str(Popen(["cowsay", "-f", "gnu", phrase], stdout=PIPE).communicate()[0], "utf-8") + "```"
+
+
 def zalgofy(text):
     return zalgo.zalgo().zalgofy(text)
 

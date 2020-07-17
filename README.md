@@ -9,7 +9,7 @@ The commands currently implemented are:
 Gives a list of commands, use &help \[command] to get a description of a specific command
 
 ## Fortune
-Gives you a fortune as spoken by a cow
+Gives you a fortune as spoken by a gnu
 
 ## Lenny
 Gives a random Lenny face
@@ -22,6 +22,9 @@ Does an ASCII crab rave
 
 ## Cow
 Makes a cow say the rest of your message
+
+## Gnu
+Makes a gnu say the rest of your message
 
 ## Roll
 Rolls a number of dice with the number of sides chosen by the user. Used by typing &roll \[sides] \[count]. Defaults to 6 sides and 1 die.
@@ -67,3 +70,6 @@ Gives you a coolness percentage
 
 ## Space
 Gives a random NASA picture of the day
+
+## Kanye
+Gives a random Kanye quote
