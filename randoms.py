@@ -16,7 +16,7 @@ def fortune():
 def lenny():
     req = requests.get("https://api.lenny.today/v1/random")
     req = req.json()[0]
-    return req["face"]
+    return req["face"].replace("\\", "\\\\")
 
 
 def roll(size=6, count=1):
@@ -37,11 +37,17 @@ def roast(user: discord.User):
     return user.mention + " " + insult
 
 
-def image(tag):
-    req = requests.get(f"https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags={tag}")
-    req = eval(req.text.replace("jsonFlickrFeed(", "")[:-1])
-    req = random.choice(req["items"])["description"]
-    req = re.findall('src=\".*\"', req)[0].split('"')[1].replace("\\/", '/')
+def image(tag, api_key):
+    headers = {"Authorization": f"Client-ID {api_key}"}
+    url = f"https://api.imgur.com/3/gallery/t/{tag}"
+    req = requests.request("GET", url, headers=headers).json()
+    try:
+        req = random.choice(random.choice(req["data"]["items"])["images"])["link"]
+    except KeyError:
+        try:
+            req = random.choice(req["data"]["items"])["link"]
+        except KeyError:
+            return "Getting too many requests right now, please try again later"
     return req
 
 

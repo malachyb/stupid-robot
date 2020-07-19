@@ -6,6 +6,7 @@ from responses import *
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
+IMGUR_KEY = os.getenv("IMGUR_KEY")
 client = discord.Client()
 
 
@@ -86,16 +87,16 @@ async def on_message(message: discord.Message):
                     await channel.send("need a user to roast")
                 return
             elif command[0] == "dog":
-                await channel.send(image("dog"))
+                await channel.send(image("dog", IMGUR_KEY))
                 return
             elif command[0] == "cat":
-                await channel.send(image("cat"))
+                await channel.send(image("cat", IMGUR_KEY))
                 return
             elif command[0] == "monkey":
-                await channel.send(image("monkey"))
+                await channel.send(image("monkey", IMGUR_KEY))
                 return
             elif command[0] == "giraffe":
-                await channel.send(image("giraffe"))
+                await channel.send(image("giraffe", IMGUR_KEY))
                 return
             elif command[0] == "compatibility":
                 try:
