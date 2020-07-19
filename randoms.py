@@ -37,10 +37,15 @@ def roast(user: discord.User):
     return user.mention + " " + insult
 
 
-def image(tag, api_key):
-    headers = {"Authorization": f"Client-ID {api_key}"}
-    url = f"https://api.imgur.com/3/gallery/t/{tag}"
-    req = requests.request("GET", url, headers=headers).json()
+def image(tag, api_key, archives={}):
+    if tag in archives and datetime.datetime.now() - archives[tag]["time"] < datetime.timedelta(hours=1):
+        req = archives[tag]
+    else:
+        headers = {"Authorization": f"Client-ID {api_key}"}
+        url = f"https://api.imgur.com/3/gallery/t/{tag}"
+        req = requests.request("GET", url, headers=headers).json()
+        archives[tag] = req
+        archives[tag]["time"] = datetime.datetime.now()
     try:
         req = random.choice(random.choice(req["data"]["items"])["images"])["link"]
     except KeyError:
